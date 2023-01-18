@@ -23,7 +23,7 @@
         bool isStraight = true;
         for (int i = 0; i < 4; i++)
         {
-            if (sortedCards[i].Value != GetValue(int.Parse(sortedCards[i + 1].Value) - 1))
+            if (GetValue(sortedCards[i].Value) != GetValue(sortedCards[i + 1].Value) - 1)
             {
                 isStraight = false;
                 break;
@@ -38,15 +38,15 @@
         return "No Category";
     }
 
-    private string GetValue(int value)
+    private int GetValue(string value)
     {
         switch (value)
         {
-            case 11: return "J";
-            case 12: return "Q";
-            case 13: return "K";
-            case 14: return "A";
-            default: return value.ToString();
+            case "J": return 11;
+            case "Q": return 12;
+            case "K": return 13;
+            case "A": return 14;
+            default: return int.Parse(value);
         }
     }
 }
