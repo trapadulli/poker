@@ -2,13 +2,21 @@
 {
     public Card[] Cards { get; set; }
     public string Category { get; set; }
-
+    public int CategoryScore { get; set; }
+    public int CardScore { get; set; }
+    
     public Hand(Card[] cards)
     {
+       
         Cards = cards;
         Category = GetCategory();
+        CategoryScore = Category == "Pair" ? 1 :
+                        Category == "Two Pair" ? 2 :
+                        Category == "Straight" ? 3 :
+                        Category == "Flush" ? 4 : 0;
+        
     }
-
+    
     private string GetCategory()
     {
         int[] arry = new int[5];
@@ -22,10 +30,16 @@
 
         // Check for pairs
         var pairs = Cards.GroupBy(x => x.Value).Where(x => x.Count() == 2);
+        var helper = new CardGame.Helper();
+        foreach (var pair in pairs)
+        {
+            CardScore =+ pair.Select(x => helper.Converter[x.Value]).Sum();
+
+        }
         if (pairs.Count() == 1) return "Pair";
         if (pairs.Count() == 2) return "Two Pair";
 
-
+            
 
         // Check for straight
         var sortedCards = arry.OrderBy(x => x).ToArray();
@@ -38,12 +52,20 @@
                 break;
             }
         }
-        if (isStraight) return "Straight";
+        if (isStraight)
+        {
+            CardScore = sortedCards.Sum();
+            return "Straight";
+        }                                                                
 
         // Check for flush
         var flush = Cards.GroupBy(x => x.Suit).Where(x => x.Count() == 5);
-        if (flush.Count() == 1) return "Flush";
-
+        if (flush.Count() == 1)
+        {
+            CardScore = sortedCards.Sum();
+            return "Flush";
+        }
+        
         return "No Category";
     }
 
