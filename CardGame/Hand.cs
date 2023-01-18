@@ -11,6 +11,15 @@
 
     private string GetCategory()
     {
+        int[] arry = new int[5];
+        for (int i = 0; i < Cards.Length; i++)
+        {
+            arry[i] = Cards[i].Value == "J" ? 11 :
+                      Cards[i].Value == "Q" ? 12 :
+                      Cards[i].Value == "K" ? 13 :
+                      Cards[i].Value == "A" ? 14 : int.Parse(Cards[i].Value);
+         }
+
         // Check for pairs
         var pairs = Cards.GroupBy(x => x.Value).Where(x => x.Count() == 2);
         if (pairs.Count() == 1) return "Pair";
@@ -19,11 +28,11 @@
 
 
         // Check for straight
-        var sortedCards = Cards.OrderBy(x => x.Value).ToArray();
+        var sortedCards = arry.OrderBy(x => x).ToArray();
         bool isStraight = true;
         for (int i = 0; i < 4; i++)
         {
-            if (GetValue(sortedCards[i].Value) != GetValue(sortedCards[i + 1].Value) - 1)
+            if (sortedCards[i] != sortedCards[i + 1] - 1)
             {
                 isStraight = false;
                 break;

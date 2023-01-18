@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\repo\\CardGame\\CodeQuiiz\\CardGame\\CardGame.csproj",
+      "projectUniqueName": "C:\\Users\\vanwoeziks\\Documents\\poker\\CardGame\\CardGame.csproj",
       "projectName": "CardGame",
-      "projectPath": "C:\\repo\\CardGame\\CodeQuiiz\\CardGame\\CardGame.csproj",
+      "projectPath": "C:\\Users\\vanwoeziks\\Documents\\poker\\CardGame\\CardGame.csproj",
       "packagesPath": "C:\\Users\\vanwoeziks\\.nuget\\packages\\",
-      "outputPath": "C:\\repo\\CardGame\\CodeQuiiz\\CardGame\\obj\\",
+      "outputPath": "C:\\Users\\vanwoeziks\\Documents\\poker\\CardGame\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vanwoeziks\\AppData\\Roaming\\NuGet\\NuGet.Config",
